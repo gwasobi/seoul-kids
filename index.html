@@ -33,7 +33,7 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.5;
-      padding: 20px 16px 80px 16px;
+      padding: 20px 16px 40px 16px;
     }
 
     .container { max-width: 600px; margin: 0 auto; }
@@ -52,7 +52,7 @@
     h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
     p.sub { font-size: 14px; color: var(--subtext); }
 
-    /* 💡 원클릭 예약 안내 배너 */
+    /* 💡 1초 컷 꿀팁 가이드 박스 */
     .guide-banner {
       background: #13273e;
       border: 1px solid #1e3a5f;
@@ -149,6 +149,33 @@
     .btn-smart-link:active { transform: scale(0.98); }
     .btn-smart-link:hover { background: #10b981; }
 
+    /* Footer (출처 & 면책조항) */
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+    .footer-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-bottom: 8px;
+    }
+    .footer-item {
+      margin-bottom: 6px;
+    }
+    .footer-item strong {
+      color: #94a3b8;
+    }
+    .footer-copy {
+      margin-top: 14px;
+      font-size: 11px;
+      color: #475569;
+    }
+
     /* Toast Notification */
     #toast {
       visibility: hidden;
@@ -227,6 +254,20 @@
     <div id="cardList" class="card-list">
       <div class="empty-state">구글 시트에서 최신 서울시 키즈 프로그램을 불러오는 중...</div>
     </div>
+
+    <!-- 푸터: 정보 출처 및 법적 면책 조항 -->
+    <footer>
+      <div class="footer-title">안내 및 면책 조항</div>
+      <div class="footer-item">
+        • <strong>정보 출처</strong>: 본 서비스의 공공 프로그램 및 시설 정보는 <a href="https://yeyak.seoul.go.kr" target="_blank" rel="noopener noreferrer" style="color: #94a3b8; text-decoration: underline;">서울시 공공서비스예약(yeyak.seoul.go.kr)</a>의 공개 데이터를 기반으로 수집 및 큐레이션되었습니다.
+      </div>
+      <div class="footer-item">
+        • <strong>면책 고지</strong>: 본 사이트는 각 지자체 및 운영 기관의 정보를 요약 제공하는 비공식 정보 안내 포털입니다. 예약 신청 및 결제 등 실거래는 서울시 공식 포털에서 직접 이루어지며, 기관의 사정에 따른 일정 변경이나 조기 마감에 대해 본 사이트는 법적 책임을 지지 않습니다.
+      </div>
+      <div class="footer-copy">
+        © 서울 키즈나우 (Seoul Kids Now). All rights reserved.
+      </div>
+    </footer>
   </div>
 
   <!-- 자동 복사 토스트 팝업 -->
@@ -321,7 +362,7 @@
       // 3. 이동할 목적지 URL (문화체험 전용 상세검색 URL + 자동 쿼리)
       let targetUrl = `https://yeyak.seoul.go.kr/web/search/selectPageListDetailSearchImg.do?code=T200&query=${encodeURIComponent(searchKeyword)}`;
 
-      // 시트에 수작업으로 채운 상세 직링크(selectReservView)가 있으면 그 주소를 최우선으로 사용
+      // 시트에 상세 직링크(selectReservView)가 있으면 그 주소를 최우선으로 사용
       if (explicitUrl && explicitUrl.includes('selectReservView')) {
         targetUrl = explicitUrl;
       }
