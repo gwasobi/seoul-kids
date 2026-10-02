@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>서울 키즈나우 | 실시간 서울 무료 키즈체험 & 공공 키즈카페 치트키</title>
+  <meta name="description" content="서울시 유아숲체험원, 어린이 박물관, 서울형 키즈카페 실시간 접수 일정과 마감 D-Day 총정리">
+  
+  <!-- 오픈그래프 (카카오톡, SNS 미리보기) -->
+  <meta property="og:title" content="서울 키즈나우 | 실시간 서울 무료 키즈체험 & 공공 키즈카페 치트키">
+  <meta property="og:description" content="이번 주말 아이랑 어디 가지? 서울시 공공 무료 숲체험 & 서울형 키즈카페 실시간 마감 D-Day 확인">
+  <meta property="og:type" content="website">
+
+  <!-- 구글 애드센스 -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1821698855548754"
+       crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg: #0b1320;
+      --card-bg: #162235;
+      --text: #f8fafc;
+      --subtext: #94a3b8;
+      --accent: #10b981; /* 키즈/자연 테마의 에메랄드 */
+      --accent-soft: rgba(16, 185, 129, 0.15);
+      --border: #24344d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 20px 16px 60px 16px;
+    }
+
+    .container { max-width: 600px; margin: 0 auto; }
+
+    header { margin-bottom: 24px; }
+    .badge-live {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--accent-soft); color: var(--accent);
+      padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .badge-live::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    }
+    h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
+    p.sub { font-size: 14px; color: var(--subtext); }
+
+    .filter-section-title {
+      font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 8px; text-transform: uppercase;
+    }
+    .filter-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+    .filter-chip {
+      background: var(--card-bg); border: 1px solid var(--border);
+      color: var(--subtext); padding: 6px 12px; border-radius: 18px;
+      font-size: 12.5px; font-weight: 600; white-space: nowrap; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-chip.active {
+      background: var(--accent); color: #062419; border-color: var(--accent); font-weight: 700;
+    }
+
+    .card-list { display: flex; flex-direction: column; gap: 14px; }
+    .card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: center; }
+    .tag-group { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+    .tag-area { font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 6px; background: #22334a; color: #93c5fd; }
+    .tag-booking { font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 6px; background: var(--accent-soft); color: #34d399; }
+    .d-day { font-size: 12.5px; font-weight: 800; color: #f87171; }
+
+    .title { font-size: 16.5px; font-weight: 700; color: #ffffff; letter-spacing: -0.3px; line-height: 1.4; }
+    
+    .meta-box {
+      background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px; padding: 10px 12px; font-size: 13px; color: #cbd5e1;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .meta-item { display: flex; gap: 6px; align-items: flex-start; }
+    .meta-item span.label { color: var(--subtext); min-width: 58px; }
+
+    .btn-link {
+      display: block; text-align: center; text-decoration: none; padding: 11px 0;
+      border-radius: 8px; font-size: 13.5px; font-weight: 700;
+      background: #059669; color: #ffffff; transition: background 0.2s;
+      margin-top: 4px;
+    }
+    .btn-link:hover { background: #10b981; }
+
+    .empty-state { text-align: center; padding: 40px 0; color: var(--subtext); font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="badge-live">100% 무료 & 공공 예약 실시간</div>
+      <h1>서울 키즈나우</h1>
+      <p class="sub">서울시 무료 유아숲체험 & 공공 키즈 프로그램 치트키</p>
+    </header>
+
+    <!-- 권역 필터 -->
+    <div class="filter-section-title">권역별</div>
+    <div class="filter-wrapper" id="regionFilters">
+      <button class="filter-chip active" onclick="setFilter('all', this, 'region')">전체</button>
+      <button class="filter-chip" onclick="setFilter('gangnam', this, 'region')">강남·송파·서초</button>
+      <button class="filter-chip" onclick="setFilter('central', this, 'region')">종로·중구·용산</button>
+      <button class="filter-chip" onclick="setFilter('west', this, 'region')">동작·관악·마포·서대문</button>
+      <button class="filter-chip" onclick="setFilter('east_north', this, 'region')">성동·광진·중랑·노원·강북</button>
+      <button class="filter-chip" onclick="setFilter('etc', this, 'region')">기타(과천/구로/강서)</button>
+    </div>
+
+    <!-- 테마 필터 -->
+    <div class="filter-section-title">테마별</div>
+    <div class="filter-wrapper" id="themeFilters">
+      <button class="filter-chip active" onclick="setFilter('all', this, 'theme')">전체 보기</button>
+      <button class="filter-chip" onclick="setFilter('숲체험', this, 'theme')">🌲 유아숲·생태</button>
+      <button class="filter-chip" onclick="setFilter('키즈카페', this, 'theme')">🧸 키즈카페</button>
+      <button class="filter-chip" onclick="setFilter('박물관', this, 'theme')">🏛 박물관·역사</button>
+      <button class="filter-chip" onclick="setFilter('가족축제', this, 'theme')">🎉 축제/주말특강</button>
+    </div>
+
+    <!-- 카드 목록 -->
+    <div id="cardList" class="card-list">
+      <div class="empty-state">구글 시트에서 최신 서울시 키즈 프로그램을 불러오는 중...</div>
+    </div>
+  </div>
+
+  <script>
+    // ✅ 사용자의 구글 스프레드시트 ID 연동 완료
+    const SHEET_ID = '1DEdeUKLTC_1mcoI6XVEE0jXeISqPJfzmtQ-HeUWrbIc';
+    
+    let kidsData = [];
+    let currentRegionFilter = 'all';
+    let currentThemeFilter = 'all';
+
+    window.googleDataHandler = function(json) {
+      try {
+        const rows = json.table.rows;
+        if (!rows || rows.length === 0) {
+          document.getElementById('cardList').innerHTML = '<div class="empty-state">시트에 데이터가 없습니다.</div>';
+          return;
+        }
+
+        kidsData = rows.map(r => {
+          const getVal = (idx) => {
+            if (!r.c || !r.c[idx]) return '';
+            const cell = r.c[idx];
+            return (cell.f ? cell.f : (cell.v !== null && cell.v !== undefined ? String(cell.v) : '')).trim();
+          };
+
+          return {
+            area: getVal(0),      // A열: area
+            title: getVal(1),     // B열: title
+            endDate: getVal(2),   // C열: endDate
+            eventDate: getVal(3), // D열: eventDate
+            booking: getVal(4),   // E열: booking
+            location: getVal(5),  // F열: location
+            linkUrl: getVal(6)    // G열: linkURL
+          };
+        }).filter(item => {
+          if (item.area === 'area' || item.title === 'title') return false;
+          return item.title !== '' || item.area !== '';
+        });
+
+        renderCards();
+      } catch (e) {
+        console.error(e);
+        document.getElementById('cardList').innerHTML = '<div class="empty-state">데이터를 처리하는 중 오류가 발생했습니다.</div>';
+      }
+    };
+
+    function parseStandardDate(endDateStr) {
+      if (!endDateStr) return null;
+      let cleanDate = endDateStr.trim();
+      if (cleanDate.startsWith('Date(')) {
+        const parts = cleanDate.replace(/Date\(\vert{}\)/g, '').split(',');
+        cleanDate = `${parts[0]}-${String(Number(parts[1]) + 1).padStart(2, '0')}-${String(parts[2]).padStart(2, '0')}`;
+      }
+      const d = new Date(cleanDate);
+      return isNaN(d.getTime()) ? null : d;
+    }
+
+    function getDDay(endDateStr) {
+      const end = parseStandardDate(endDateStr);
+      if (!end) return '';
+      
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      end.setHours(0, 0, 0, 0);
+      
+      const diff = Math.ceil((end - today) / (1000 * 60 * 60 * 24));
+      if (diff < 0) return '접수종료';
+      if (diff === 0) return '오늘 마감!';
+      return `D-${diff}`;
+    }
+
+    function renderCards() {
+      const listContainer = document.getElementById('cardList');
+      
+      // 1. 접수 마감된 항목 제외 및 다중 필터 적용
+      let filtered = kidsData.filter(item => {
+        const dDay = getDDay(item.endDate);
+        if (dDay === '접수종료') return false;
+
+        const areaVal = item.area || '';
+        const titleVal = item.title || '';
+        const bookingVal = item.booking || '';
+        const combinedText = `${areaVal} ${titleVal} ${bookingVal}`;
+
+        // 지역 필터링
+        if (currentRegionFilter !== 'all') {
+          if (currentRegionFilter === 'gangnam') {
+            if (!(areaVal.includes('강남') || areaVal.includes('송파') || areaVal.includes('서초'))) return false;
+          } else if (currentRegionFilter === 'central') {
+            if (!(areaVal.includes('종로') || areaVal.includes('중구') || areaVal.includes('용산'))) return false;
+          } else if (currentRegionFilter === 'west') {
+            if (!(areaVal.includes('동작') || areaVal.includes('관악') || areaVal.includes('마포') || areaVal.includes('서대문'))) return false;
+          } else if (currentRegionFilter === 'east_north') {
+            if (!(areaVal.includes('성동') || areaVal.includes('광진') || areaVal.includes('중랑') || areaVal.includes('노원') || areaVal.includes('강북') || areaVal.includes('동대문'))) return false;
+          } else if (currentRegionFilter === 'etc') {
+            if (!(areaVal.includes('과천') || areaVal.includes('구로') || areaVal.includes('강서'))) return false;
+          }
+        }
+
+        // 테마 필터링
+        if (currentThemeFilter !== 'all') {
+          if (currentThemeFilter === '숲체험') {
+            if (!(combinedText.includes('숲') || combinedText.includes('생태') || combinedText.includes('자연') || combinedText.includes('공원'))) return false;
+          } else if (currentThemeFilter === '키즈카페') {
+            if (!(combinedText.includes('키즈카페') || bookingVal.includes('키즈카페'))) return false;
+          } else if (currentThemeFilter === '박물관') {
+            if (!(combinedText.includes('박물관') || combinedText.includes('서당') || combinedText.includes('한양도성'))) return false;
+          } else if (currentThemeFilter === '가족축제') {
+            if (!(combinedText.includes('축제') || combinedText.includes('가족') || combinedText.includes('주말'))) return false;
+          }
+        }
+
+        return true;
+      });
+
+      // 2. 마감 임박순 (오름차순) 자동 정렬
+      filtered.sort((a, b) => {
+        const dateA = parseStandardDate(a.endDate) || new Date('9999-12-31');
+        const dateB = parseStandardDate(b.endDate) || new Date('9999-12-31');
+        return dateA - dateB;
+      });
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = '<div class="empty-state">해당하는 키즈 프로그램이 없습니다.</div>';
+        return;
+      }
+
+      listContainer.innerHTML = filtered.map(item => {
+        const dDay = getDDay(item.endDate);
+        const linkHref = item.linkUrl || 'https://yeyak.seoul.go.kr';
+        return `
+          <div class="card">
+            <div class="card-top">
+              <div class="tag-group">
+                <span class="tag-area">${item.area || '서울'}</span>
+                <span class="tag-booking">${item.booking || '무료/선착순'}</span>
+              </div>
+              <span class="d-day">${dDay}</span>
+            </div>
+            
+            <div class="title">${item.title || '프로그램명'}</div>
+            
+            <div class="meta-box">
+              <div class="meta-item">
+                <span class="label">📍 장소</span>
+                <span>${item.location || '상세페이지 참조'}</span>
+              </div>
+              <div class="meta-item">
+                <span class="label">🗓️ 이용기간</span>
+                <span>${item.eventDate || '-'}</span>
+              </div>
+              <div class="meta-item">
+                <span class="label">⏳ 접수마감</span>
+                <span>${item.endDate ? `~${item.endDate}` : '-'}</span>
+              </div>
+            </div>
+
+            <a href="${linkHref}" target="_blank" rel="noopener noreferrer" class="btn-link">
+              ⚡ 서울시 실시간 예약 신청하기
+            </a>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setFilter(filter, el, type) {
+      if (type === 'region') {
+        currentRegionFilter = filter;
+        document.querySelectorAll('#regionFilters .filter-chip').forEach(btn => btn.classList.remove('active'));
+      } else {
+        currentThemeFilter = filter;
+        document.querySelectorAll('#themeFilters .filter-chip').forEach(btn => btn.classList.remove('active'));
+      }
+      el.classList.add('active');
+      renderCards();
+    }
+
+    // Google Sheets JSONP 로더
+    const gScript = document.createElement('script');
+    gScript.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=responseHandler:googleDataHandler`;
+    document.body.appendChild(gScript);
+  </script>
+</body>
+</html>
