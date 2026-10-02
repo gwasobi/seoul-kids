@@ -52,7 +52,7 @@
     h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
     p.sub { font-size: 14px; color: var(--subtext); }
 
-    /* 💡 1초 컷 꿀팁 가이드 박스 */
+    /* 💡 원클릭 예약 안내 배너 */
     .guide-banner {
       background: #13273e;
       border: 1px solid #1e3a5f;
@@ -149,7 +149,7 @@
     .btn-smart-link:active { transform: scale(0.98); }
     .btn-smart-link:hover { background: #10b981; }
 
-    /* Toast Notification (화면 하단 팝업) */
+    /* Toast Notification */
     #toast {
       visibility: hidden;
       min-width: 280px;
@@ -190,15 +190,15 @@
     <!-- 💡 원클릭 예약 안내 배너 -->
     <div class="guide-banner">
       <div class="guide-header">
-        <span>⚡</span> <span>예약 신청 1초 컷 꿀팁!</span>
+        <span>⚡</span> <span>서울시 문화체험 예약 1초 컷 꿀팁!</span>
       </div>
       <div class="guide-content">
-        아래 <b>[초록색 버튼]</b>을 누르면 프로그램명이 <b>자동 복사</b>되며 서울시 예약창으로 이동합니다.<br>
-        서울시 사이트 검색창에 <b>[붙여넣기(Ctrl+V)]</b>만 하시면 바로 신청하실 수 있습니다.
+        아래 <b>[초록색 버튼]</b>을 누르면 프로그램명이 <b>자동 복사</b>되며 문화체험 예약 화면으로 바로 이동합니다.<br>
+        혹시 검색 결과가 바로 뜨지 않으면 검색창에 <b>[붙여넣기(Ctrl+V)]</b>만 하세요!
       </div>
       <div class="search-mockup">
-        <span>🔍 서울시 통합검색창:</span>
-        <span class="highlight-text">[여기에 붙여넣기(Ctrl+V) 후 엔터 ↵]</span>
+        <span>🔍 문화체험 검색창:</span>
+        <span class="highlight-text">[붙여넣기(Ctrl+V) 후 검색 ↵]</span>
       </div>
     </div>
 
@@ -230,7 +230,7 @@
   </div>
 
   <!-- 자동 복사 토스트 팝업 -->
-  <div id="toast">📋 검색어가 자동 복사되었습니다! 서울시 사이트 검색창에 붙여넣기(Ctrl+V)하세요.</div>
+  <div id="toast">📋 검색어가 자동 복사되었습니다! 검색창에 붙여넣기(Ctrl+V)하세요.</div>
 
   <script>
     const SHEET_ID = '1DEdeUKLTC_1mcoI6XVEE0jXeISqPJfzmtQ-HeUWrbIc';
@@ -300,29 +300,35 @@
       return `D-${diff}`;
     }
 
-    // ⚡ 제목 복사 & 서울시 사이트 이동 처리
+    // ⚡ 문화체험 전용 URL 이동 및 핵심 키워드 자동 복사
     function handleSmartBooking(title, explicitUrl) {
-      // 1. 앞쪽의 [구명] 태그 제거하고 깔끔한 검색어 추출
-      const cleanKeyword = title.replace(/\[.*?\]/g, '').trim();
+      // 1. 특수기호 및 괄호 제거 후 2단어 핵심 키워드 추출
+      let clean = title.replace(/\[.*?\]|\(.*?\)|<.*?>/g, ' ');
+      clean = clean.replace(/[\/~_!@#$%^&*]/g, ' ');
+      clean = clean.replace(/\d{4}년?/g, ' ').replace(/\s+/g, ' ').trim();
+      const words = clean.split(' ').filter(w => w.length > 0);
+      const searchKeyword = words.slice(0, 2).join(' ') || title.substring(0, 8);
 
-      // 2. 클립보드 자동 복사
+      // 2. 클립보드에 키워드 자동 복사
       if (navigator.clipboard) {
-        navigator.clipboard.writeText(cleanKeyword).then(() => {
-          showToast(`📋 '${cleanKeyword.substring(0, 16)}...' 복사됨! 검색창에 붙여넣기(Ctrl+V)하세요.`);
+        navigator.clipboard.writeText(searchKeyword).then(() => {
+          showToast(`📋 '${searchKeyword}' 복사됨! 검색창에 붙여넣기(Ctrl+V)하세요.`);
         }).catch(err => {
-          showToast('서울시 예약 페이지로 이동합니다.');
+          showToast('문화체험 예약 페이지로 이동합니다.');
         });
       }
 
-      // 3. 이동할 URL (시트에 링크가 있으면 직링크, 없거나 대표링크면 메인으로)
-      const targetUrl = (explicitUrl && explicitUrl.startsWith('http')) 
-        ? explicitUrl 
-        : 'https://yeyak.seoul.go.kr';
+      // 3. 이동할 목적지 URL (문화체험 전용 상세검색 URL + 자동 쿼리)
+      let targetUrl = `https://yeyak.seoul.go.kr/web/search/selectPageListDetailSearchImg.do?code=T200&query=${encodeURIComponent(searchKeyword)}`;
 
-      // 새 탭으로 열기
+      // 시트에 수작업으로 채운 상세 직링크(selectReservView)가 있으면 그 주소를 최우선으로 사용
+      if (explicitUrl && explicitUrl.includes('selectReservView')) {
+        targetUrl = explicitUrl;
+      }
+
       setTimeout(() => {
         window.open(targetUrl, '_blank');
-      }, 300);
+      }, 250);
     }
 
     function showToast(msg) {
@@ -419,7 +425,7 @@
             </div>
 
             <button type="button" class="btn-smart-link" onclick="handleSmartBooking('${safeTitle}', '${safeUrl}')">
-              ⚡ 검색어 복사 & 실시간 예약 가기
+              ⚡ 검색어 복사 & 문화체험 예약 가기
             </button>
           </div>
         `;
